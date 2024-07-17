@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+	
+	<hibernate-mapping>
+	<class name="ManyToMany.Student" table="StudMap">
+		<id name="r_no" >
+			<generator class="increment"></generator>
+		</id>
+		<property name="name"></property>
+		<property name="branch"></property> 
+			
+			<list name="teacher" table="Stud_Teach" cascade="all">
+				<key column="s_no"></key>
+				<index column="index_type" type="int"></index>
+				<many-to-many column="t_id" entity-name="ManyToMany.Teacher" ></many-to-many>
+			</list>
+  	</class>
+  	
+  	<class name="ManyToMany.Teacher" table="Teacher">
+  		<id name="t_id">
+  			
+  		</id>
+  		<property name="t_name"></property>
+  		<property name="sub"></property>
+  		
+  	</class>
+  	
+	</hibernate-mapping>

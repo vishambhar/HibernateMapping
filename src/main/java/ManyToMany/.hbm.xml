@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+	
+	<hibernate-mapping>
+	<class name="com.OneToMany.Student" table="StudMap">
+		<id name="r_no" column="RollNo"></id>
+		<property name="name" column="Name"></property>
+		<property name="branch" column="Branch"></property> 
+			
+			<list name="address" cascade="all">
+				<key column="s_no"></key>
+				<index column="index_type" type="int"></index>
+				<one-to-many class="com.OneToMany"/>
+			</list>
+  	</class>
+  	
+  	<class name="com.OneToMany.Address" table="Address">
+  		<id name="a_id">
+  			<generator class="increment"></generator>
+  		</id>
+  		<property name="f-no"></property>
+  		<property name="a_name"></property>
+  		<property name="city"></property>
+  	</class>
+  	
+	</hibernate-mapping>
